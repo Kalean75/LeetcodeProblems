@@ -1,0 +1,3 @@
+The Brute force Solution is achieved by using a nested for loop, with the outer loop starting at 0 and going to the lenght of the input array, and the inner loop starting at i + 1 and going through the rest of the loop. Once it finds the two indices that sum up to the value, it then breaks and returns these indices.
+
+The optimal solution utilizes a dictionary, and calculates target - nums[i]. if this value is in the dictionary,  it adds the indices and returns the answer. If not, then target - nums[i] is added to the dictionary.
