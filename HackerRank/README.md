@@ -1,5 +1,4 @@
-# LeetcodeSubmissions
- Leetcode submissions on various websites, with problem descriptions
+# HackerRank
+ Submissions on HackerRank
 
- Organized by website and difficulty
  
