@@ -1,29 +1,43 @@
- public List<List<int>> ThreeSum(int[] nums) 
-    {
-        List<Tuple<int,int,int>> tupleList = new List<Tuple<int,int,int>>();
-        List<List<int>> answer = new List<List<int>>();
+public class Solution {
+    public List<List<int>> ThreeSum(int[] nums) {
         Array.Sort(nums);
-        for(int i = 0; i < nums.Length - 2; i++)
+        List<List<int>> res = new List<List<int>>();
+
+        for (int i = 0; i < nums.Length; i++) 
         {
-            for(int j = i + 1; j < nums.Length - 1; j++)
+            if (nums[i] > 0)
             {
-                for(int k = j + 1; k < nums.Length; k++)
+                break;
+            }
+            if (i > 0 && nums[i] == nums[i - 1]) 
+            {
+                continue;
+            }
+
+            int l = i + 1, r = nums.Length - 1;
+            while (l < r) 
+            {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum > 0) 
                 {
-                    if(nums[i] + nums[j] + nums[k] == 0)
+                    r--;
+                } 
+                else if (sum < 0) 
+                {
+                    l++;
+                } 
+                else 
+                {
+                    res.Add(new List<int> {nums[i], nums[l], nums[r]});
+                    l++;
+                    r--;
+                    while (l < r && nums[l] == nums[l - 1]) 
                     {
-                        Tuple<int, int, int>  triplets = new Tuple<int,int,int>(nums[i],nums[j],nums[k]);
-                        if(!tupleList.Contains(triplets))
-                        {
-                            tupleList.Add(triplets);
-                        }
+                        l++;
                     }
                 }
             }
         }
-        for(int i = 0; i < tupleList.Count;i++)
-        {
-            List<int> newList = new List<int>{tupleList[i].Item1,tupleList[i].Item2,tupleList[i].Item3};
-            answer.Add(newList);
-        }
-        return answer;
+        return res;
     }
+}
